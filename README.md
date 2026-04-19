@@ -51,23 +51,56 @@ Design principle:
 Security at the Edge, Routing at the Core.
 
 🔹 Distribution Layer
-
+🔹 Core Router (Routing Backbone)
 Main functions:
+Internal routing backbone
+Connects Edge, Distribution, and Branch routers
+Characteristics:
+OSPF enabled
+No NAT
+No firewall filtering
+Focused on routing performance
 
-Aggregates user networks
-Connects access networks to Core
+Design principle:
+Security at the Edge, Routing at the Core.
 
-Networks:
+🔹 Distribution Layer
 
-192.168.1.0/24
-192.168.2.0/24
-
-Features:
-
+The distribution layer is divided into:
+Distribution Aggregation Router
+Role:
+Connects Core to Distribution access routers
+Acts as routing aggregation point
 OSPF participation
-Routing toward Core
-🔹 Branch Router
+Characteristics:
+OSPF enabled
+No NAT
+No firewall
+No DHCP
+Pure routing function
+Uses point-to-point /30 subnets for routing efficiency.
 
+Distribution-1 (Access Layer)
+LAN Network:
+192.168.1.0/24
+Gateway: 192.168.1.1
+Services:
+DHCP Server for local users
+OSPF participation
+Dynamic route learning from Core
+Acts as gateway and IP assignment server for subnet 192.168.1.0/24.
+
+Distribution-2 (Access Layer)
+LAN Network:
+192.168.2.0/24
+Gateway: 192.168.2.1
+Services:
+DHCP Server for local users
+OSPF participation
+Dynamic route learning from Core
+Acts as gateway and IP assignment server for subnet 192.168.2.0/24.
+
+🔹 Branch Router
 Main functions:
 
 Branch gateway
@@ -96,7 +129,6 @@ Traffic flow:
 User → Distribution/Branch → Core → Edge → ISP → Internet
 
 # Internet Redundancy
-
 Dual ISP configuration using:
 
 PCC (Per Connection Classifier)
@@ -123,7 +155,6 @@ VPCS
 Ubuntu (testing/server)
 
 # Project Purpose
-
 This lab was built to practice and demonstrate:
 
 Enterprise network design
