@@ -50,7 +50,6 @@ Focused on routing performance
 Design principle:
 Security at the Edge, Routing at the Core.
 
-🔹 Distribution Layer
 🔹 Core Router (Routing Backbone)
 Main functions:
 Internal routing backbone
@@ -172,5 +171,4 @@ Redundant core
 High availability edge
 
 # Author
-
 Built as part of continuous learning in Network Engineering (Routing, Security, VLAN, and Enterprise Design using MikroTik).
